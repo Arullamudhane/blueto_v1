@@ -1,0 +1,13 @@
+/* Optional: Add some keyframe animations if needed */
+@keyframes counterAnimation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.counter {
+  transition: transform 0.5s ease-in-out;
+}

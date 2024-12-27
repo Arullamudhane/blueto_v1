@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.background-gradient {
+  background: radial-gradient(
+    circle at top center,
+    hsla(222, 80%, 60%, 0.5) 0%,
+    hsla(222, 0%, 0%, 0) 50%,
+    hsla(222, 0%, 0%, 0) 100%
+  );
+}
+.green-pink-gradient {
+  background: '#00cea8';
+  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.violet-gradient {
+  /* background: #804dee; */
+  background: linear-gradient(to top, #1fae7b 0%, #852add 100%);
+  /* linear-gradient(to top, #41b88e 0%, #6C33A3 100%); */
+  background: -webkit-linear-gradient(
+    -90deg,
+    #804dee 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .feature-text {
+    @apply text-lg mx-5 md:mx-14  my-14 md:text-xl  opacity-0 text-gray-300 tracking-wide; /* Standard Tailwind classes */
+    transform: translateY(100px); /* Custom CSS for translation */
+  }
+
+  .feature-text-container {
+    @apply w-full flex justify-center items-center flex-col md:flex-row    mt-10 md:mt-16 gap-5;
+  }
+
+  .g_fadeIn {
+    @apply opacity-0; /* Standard Tailwind class */
+    transform: translateY(100px); /* Custom CSS for translation */
+  }
+}
+
+@keyframes lineGrow {
+  0% {
+    height: 0;
+    /* width:0%; */
+  }
+  100% {
+    height: 100%;
+    /* transform: translateX(100px); */
+    /* width:40% */
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-lineGrow {
+  animation: lineGrow 2s ease-out forwards;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.5s;
+}
+
+.rel {
+  height: 100vh;
+  background-color: rgb(1, 1, 0);
+}
+
+/* Additional delays if more steps are added */
+/* two */
+.line-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+#animatedLine {
+  stroke-dasharray: 1; /* Length of the path */
+  stroke-dashoffset: 1; /* Start the path outside the view */
+  animation: drawPath 4s ease-in-out infinite; /* Animation */
+}
+
+/* Animation to draw the path */
+@keyframes drawPath {
+  0% {
+    stroke-dashoffset: 1; /* Path hidden at start */
+  }
+  50% {
+    stroke-dashoffset: 0; /* Path fully visible at midpoint */
+  }
+  100% {
+    stroke-dashoffset: -1; /* Reset to hide again */
+  }
+}
+
+
+p::selection , b::selection, h1::selection, div::selection, span::selection , h2::selection{
+  background: rgb(209, 209, 209);
+  color: rgb(254, 0, 254);
+}
+
+
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+
+.cards .green {
+  background-color: #22c55e;
+}
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100px;
+  width: 250px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.cards .card p.tip {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.cards .card p.second-text {
+  font-size: .7em;
+}
+
+.cards .card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  transform: scale(0.9, 0.9);
+}
+
+
+
+.text-gradient {
+  background: linear-gradient(to top, #1fae7b 0%, #852add 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
