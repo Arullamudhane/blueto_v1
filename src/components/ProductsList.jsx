@@ -3,6 +3,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 import gsap from "gsap";
 import gift from "../images/gift.gif";
 import ribbon from "../images/ribbon.png";
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const ProductsList = ({ products }) => {
   const component = useRef(null);
@@ -91,65 +92,62 @@ const ProductsList = ({ products }) => {
     setCurrentItem(null);
   };
   return (
-    <div ref={component} className='min-h-screen'>
-      <ul
-        className='grid border-y border-y-slate-50/25'
+    <div ref={component} className="min-h-screen bg-gradient-to-r from-gray-900/10 via-yellow-900/10 to-gray-900/10 p-4 sm:p-6 md:p-8 overflow-hidden">
+   <ul
+        className="grid border-y border-yellow-200/10 w-full max-w-6xl mx-auto"
         onMouseLeave={handleMouseLeave}
       >
         {products.map((product, index) => (
           <li
-            key={index}
-            className='list-item opacity-100 z-20 '
+            key={product.id}
+            ref={(el) => (itemsRef.current[index] = el)}
+            className="list-item opacity-0 group"
             onMouseEnter={() => handleMouseEnter(index)}
           >
-            <div className='flex flex-col justify-between -z-10 border-t border-t-slate-50/25 py-10  text-yellow-200 md:flex-row tracking-wide'>
-              <div className='flex flex-col'>
-                <span className='text-2xl font-bold text-shadow-[2px_2px_4px_#a09494]'>
-                  {product.title}
-                </span>
-                <div className='flex flex-col md:flex-row gap-10 '>
-                  <div className='prose prose-lg prose-stone mt-5 text-gray-200 w-full mx-auto  md:w-[600px]'>
-                    <p>
-                      {product.description.length > 0
-                        ? product.description
-                        : "We are excited as you are. We will launch this soon.."}
+            <div className="flex flex-col justify-between border-t border-yellow-200/10 py-8 sm:py-10 md:py-12 text-yellow-200/90 lg:flex-row transition-all duration-500 hover:bg-gradient-to-r hover:from-yellow-200/5 hover:to-transparent rounded-xl px-4 sm:px-6 group-hover:translate-x-2">
+              <div className="flex flex-col relative w-full">
+                <div className="absolute -inset-1 bg-gradient-to-r from-yellow-200 to-yellow-500 rounded-lg blur opacity-0 group-hover:opacity-15 transition duration-1000"></div>
+                <div className="relative">
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 tracking-tight group-hover:tracking-wide transition-all duration-300">
+                    {product.title}
+                  </span>
+                  <Sparkles className="absolute -top-6 -right-6 w-4 h-4 text-yellow-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12 mt-4">
+                  <div className="prose prose-lg prose-yellow mt-4 text-gray-300/90 w-full lg:w-[500px] xl:w-[600px] transition-transform duration-500 group-hover:translate-y-[-5px]">
+                    <p className="text-base sm:text-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
+                      {product.description || "Coming soon..."}
                     </p>
-                    {product.title === "ReviewApplication" && (
-                      <img className=' md:w-1/2' src={gift} alt='Example GIF' />
-                    )}
                   </div>
-                  <div className='flex relative justify-center items-center w-full md:w-[470px] border-[1px] border-[solid] border-[#5b5b5b] mx-auto'>
+                  <div className="relative group/image w-full sm:w-[80%] lg:w-[400px] xl:w-[470px] mx-auto lg:mx-0 overflow-hidden rounded-xl bg-gradient-to-br from-yellow-200/10 to-transparent p-1">
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-200/20 to-transparent opacity-0 group-hover/image:opacity-100 transition-all duration-700 rounded-xl backdrop-blur-sm transform group-hover/image:translate-x-full" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 rounded-xl" />
                     <img
                       src={product.image}
                       alt={product.title}
-                      s
-                      className='w-full  h-64 rounded-md'
+                      className="product-image w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg transition-all duration-700 group-hover/image:scale-110 group-hover/image:rotate-1"
                     />
-                    {product.title === "ReviewApplication" && (
-                      <img
-                        className='absolute  w-[350px] md:w-[33vw] mx-auto'
-                        src={ribbon}
-                        alt='gift ribbon'
-                      />
-                    )}
                   </div>
                 </div>
               </div>
-              {/* <span className='ml-auto flex items-center gap-2 text-xl  font-medium md:mr-10 cursor-pointer z-20'>
-                <IoIosArrowDropright />
-              </span> */}
+              <span className="hidden lg:flex ml-auto items-center gap-2 text-xl font-medium mr-6 cursor-pointer group/arrow">
+                <div className="relative overflow-hidden p-2 group-hover/arrow:rotate-12 transition-transform duration-300">
+                  <ArrowRight className="transition-all duration-500 group-hover/arrow:translate-x-12 group-hover/arrow:opacity-0 group-hover/arrow:scale-75" />
+                  <ArrowRight className="absolute inset-2 transition-all duration-500 -translate-x-12 opacity-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100" />
+                </div>
+              </span>
             </div>
           </li>
         ))}
       </ul>
       <div
-        className='hover-reveal pointer-events-none absolute  left-0 top-0  h-[320px] md:w-[200px] rounded-lg  z-10 opacity-100 bg-cover bg-center transition-[background] duration-300 ' //bg-cover bg-center
+        ref={revealRef}
+        className="hover-reveal pointer-events-none fixed left-0 top-0 h-[320px] w-[200px] rounded-xl opacity-0 bg-cover bg-center transition-[background] duration-300 shadow-[0_0_25px_rgba(255,255,255,0.1)] ring-1 ring-yellow-200/20 backdrop-blur-sm hidden md:block"
         style={{
           backgroundImage:
-            currentItem !== null ? `url(${productImages[currentItem]})` : "",
+            currentItem !== null ? `url(${products[currentItem].image})` : "",
         }}
-        ref={revealRef}
-      ></div>
+      />
     </div>
   );
 };
