@@ -22,7 +22,7 @@ const ServiceCard = ({ title, component }) => {
     <Tilt className='xs:w-[250px] w-[250px]'>
       <div className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-md  service-card'>
         <div
-          className='bg-[#021145] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly 
+          className='bg-[#020e37] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly 
             items-center flex-col '
         >
           <h3 className='text-white text-[20px] font-bold text-center'>

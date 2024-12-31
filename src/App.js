@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <BrowserRouter>
-      <div className=' bg-[#021145]   relative  min-h-screen px-0 md:px-10'>
+      <div className=' bg-[#020e37]   relative  min-h-screen px-0 md:px-10'>
         <div className='background-gradient absolute inset-0  max-h-screen' />
         {/* <div className="pointer-events-none absolute inset-0  h-full bg-[url('./noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div> */}
 
