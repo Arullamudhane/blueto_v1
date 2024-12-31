@@ -11,7 +11,7 @@ const ProfileCard = () => {
       desc: "Strategic planning, and effective marketing strategies. Highly skilled in building strong client relationships and driving business growth.",
       photo: loguone,
       linkedin: "https://www.linkedin.com/in/loganathan-v/",
-      gmail: "vaithilogu@gmail",
+      gmail: "loganathan@myblueto.com",
       online: true,
     },
     // {
